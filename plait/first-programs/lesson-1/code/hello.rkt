@@ -43,6 +43,7 @@
 ;; Make a procedure
 
 ;; conditionals 
+
 (
  if (< 10 2)
   (display "the value was true!")
