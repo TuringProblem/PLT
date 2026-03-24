@@ -1,9 +1,9 @@
 #lang plait
 
-|#
+#|
 Author: { @Override } -> 20260323
 Time: 13:51 
-#|
+|#
 
 (define pi : Number 3.14)
 (define x : Number 55)
