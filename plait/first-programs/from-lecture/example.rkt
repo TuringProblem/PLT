@@ -54,7 +54,7 @@ Time to show off some fancy stuff :o
 |#
 
 (define my-list '(1 2 3 4 5))
-;; recursive definition for summing a list - feels simliar to ocaml 
+;; recursive definition for summing a list - feels simliar to ocaml
 (define (add-list l) (type-case (Listof Number) l
                                 [empty 0]
                                 [(cons hd tl) (+ hd (add-list tl))]))
