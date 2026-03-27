@@ -34,3 +34,8 @@
 > ***NOTE:*** *which parens should I use? Plait has two kinds of parenthesis `()` && `[]` they behave the same, but look different*
 > 
 > In Plait functions are also values, so just like the lambda calculus you can pass functions around as arguments to other functions.
+
+
+
+
+
