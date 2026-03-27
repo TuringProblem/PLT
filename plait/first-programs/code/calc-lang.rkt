@@ -13,3 +13,4 @@
 (test (calc-interpreter (addE (numE 3) (numE 3))) 6)
 (test (calc-interpreter (addE (addE (numE 1) (numE 2)) (numE 3))) 6) ; building upon it but 1 + 2 + 3 = 6
 (test (calc-interpreter (addE (addE (numE 1) (numE 2)) (addE (numE 3) (numE 4)))) 10) ; building upon it but (1 + 2) + (3 + 4) = 10 (associativity)
+
