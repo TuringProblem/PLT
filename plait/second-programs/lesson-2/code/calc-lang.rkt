@@ -62,3 +62,15 @@
 
 (test (step (step (addE (addE (numE 1) (numE 2)) (addE (numE 3) (numE 4))))) (addE (numE 3) (numE 7)))
 (test (step (step (step (addE (addE (numE 1) (numE 2)) (addE (numE 3) (numE 4)))))) (numE 10))
+
+;; ------- function for runnign steps --------
+
+(step-interp : (CalcLang -> CalcLang))
+(define (step-interp e)
+  (let [(stepped-e (step e))]
+    (if (equal? stepped-e e) e
+        (step-interp stepped-e))))
+
+(test (step-interp (addE (numE 1) (numE 2))) (numE 3))
+(test (step-interp (addE (addE (numE 1) (numE 2)) (addE (numE 3) (numE 4)))) (numE 10))
+

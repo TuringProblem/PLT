@@ -1,22 +1,22 @@
+// TODO: Figure out a way to use this type  
 type Tokens =
   | "push"
   | "clear"
   | "put";
 
+const compareTokenAndExpected = (stream: string[], expected: string): boolean => stream[0] === expected;
+export const push = (stream: string[]): void => stream.forEach((token: string) => pushNumber(token));
 
-const pushOrPut = (stream: string[]): void => stream[0] === "push"
-  ? push(stream) : stream[0] === "put"
-    ? push(stream) : console.log(`[${stream[0]}]: is an invalid token`);
-
-export const handleToken = (tokens: string[]): void => {
-  pushOrPut(tokens);
-}
-
-export const push = (stream: string[]): void => {
-  stream.forEach((token: string) => pushNumber(token));
-}
+export const handleToken = (tokens: string[]): void => compareTokenAndExpected(tokens, "push")
+  ? push(tokens) : compareTokenAndExpected(tokens, "put")
+    ? push(tokens) : compareTokenAndExpected(tokens, "clear")
+      ? console.clear() : console.log(`[${tokens[0]}]: is an invalid token`);
 
 
+
+
+
+// TODO: Clean this up a bit - make cuter <{^_^}>
 const pushNumber = (cases: string) => {
   switch (cases) {
     case "1":
