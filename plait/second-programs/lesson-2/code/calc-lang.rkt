@@ -56,5 +56,9 @@
                                      [else (subE (numE v1) (step e2))])]
                          [else (subE (step e1) e2)])]))
 
+
 (step (addE (addE (numE 1) (numE 2)) (addE (numE 3) (numE 4))))
-(step (addE (numE 3) (addE (numE 3) (numE 4))))
+(step (addE (numE 3) (addE (numE 3) (numE 4)))) ; (+ 3 (+ 3 4)) = 10
+
+(test (step (step (addE (addE (numE 1) (numE 2)) (addE (numE 3) (numE 4))))) (addE (numE 3) (numE 7)))
+(test (step (step (step (addE (addE (numE 1) (numE 2)) (addE (numE 3) (numE 4)))))) (numE 10))
