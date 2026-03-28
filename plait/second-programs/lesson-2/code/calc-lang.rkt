@@ -74,3 +74,10 @@
 (test (step-interp (addE (numE 1) (numE 2))) (numE 3))
 (test (step-interp (addE (addE (numE 1) (numE 2)) (addE (numE 3) (numE 4)))) (numE 10))
 
+#|
+above is a -{small-step-interpreter}- The key is that the small-step and definitional interpreters always agree on the value that all programs run to.
+We will see more of the small step interpreters as we progress through this. The key takeaway is that there is more than one way of evaluting programs.
+------------
+The small step interpreter makes each step of computation very explicit, and seems to correspond closely to how a computer might execute the above program. 
+The definitional interpreter seems to be the most straightforward implementation strategy
+|#

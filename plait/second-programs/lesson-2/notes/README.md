@@ -110,4 +110,14 @@ There are other kinds of surface syntax one might want to use. The one you're ma
 > Each line of the above computation is a ***step*** of simplification. We can design an alternative interpreter for `CalcLang` that works more like this style of reasoning that progressively simplifies programs until there is no work left to do.
 
 
+***[SEE CODE](../code/calc-lang.rkt)*** 
 
+```
+#|
+above is a -{small-step-interpreter}- The key is that the small-step and definitional interpreters always agree on the value that all programs run to.
+We will see more of the small step interpreters as we progress through this. The key takeaway is that there is more than one way of evaluting programs.
+------------
+The small step interpreter makes each step of computation very explicit, and seems to correspond closely to how a computer might execute the above program. 
+The definitional interpreter seems to be the most straightforward implementation strategy
+|#
+```
