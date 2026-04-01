@@ -4,10 +4,13 @@ type Tokens =
   | "clear"
   | "put";
 
-const compareTokenAndExpected = (stream: string[], expected: string): boolean => stream[0] === expected;
-export const push = (stream: string[]): void => stream.forEach((token: string) => pushNumber(token));
 
-export const handleToken = (tokens: string[]): void => compareTokenAndExpected(tokens, "push")
+type Token = (stream: string[]) => void;
+
+const compareTokenAndExpected = (stream: string[], expected: string): boolean => stream[0] === expected;
+export const push: Token = (stream: string[]): void => stream.forEach((token: string) => pushNumber(token));
+
+export const handleToken: Token = (tokens: string[]): void => compareTokenAndExpected(tokens, "push")
   ? push(tokens) : compareTokenAndExpected(tokens, "put")
     ? push(tokens) : compareTokenAndExpected(tokens, "clear")
       ? console.clear() : console.log(`[${tokens[0]}]: is an invalid token`);
@@ -17,7 +20,7 @@ export const handleToken = (tokens: string[]): void => compareTokenAndExpected(t
 
 
 // TODO: Clean this up a bit - make cuter <{^_^}>
-const pushNumber = (cases: string) => {
+const pushNumber = (cases: string): void => {
   switch (cases) {
     case "1":
       console.log("pushed: 1");
