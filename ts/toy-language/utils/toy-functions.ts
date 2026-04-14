@@ -8,6 +8,7 @@ type Tokens =
 type Token = (stream: string[]) => void;
 
 const compareTokenAndExpected = (stream: string[], expected: string): boolean => stream[0] === expected;
+
 export const push: Token = (stream: string[]): void => stream.forEach((token: string) => pushNumber(token));
 
 export const handleToken: Token = (tokens: string[]): void => compareTokenAndExpected(tokens, "push")
