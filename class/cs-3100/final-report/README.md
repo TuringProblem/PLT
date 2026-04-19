@@ -1,3 +1,4 @@
+# Illustration
 <img width="800" height="444" alt="Screen Recording 2026-04-18 at 7 41 19 PM" src="https://github.com/user-attachments/assets/e3fa3b9d-8c9d-452d-8995-1ea293844686" />
 
 > Showing the relationship/scalability for containing all of the data inside of one .css folder. My main reasoning for this is from only intending to use 4 services.
