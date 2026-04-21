@@ -1,0 +1,13 @@
+let x = 5 in 
+  let y = 6 in x + y;
+
+let x = 10 
+  in let y = x * 2 
+    in y - 3;
+
+let a = 2 
+  in let b = 3 
+    in let c = 4 
+      in a * b + c;
+
+(let x = 3 in x * x) + 1;

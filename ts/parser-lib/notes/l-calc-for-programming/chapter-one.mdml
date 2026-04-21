@@ -1,0 +1,23 @@
+@title Chapter One
+@author Andrew
+@date 20260721
+
+
+### 1.12 Notation
+
+@alpha - alpha
+@beta - beta
+@lambda - lambda 
+@eta - eta
+
+@line
+
+@book(
+Syntatic constructs are defined using ***BNF rules***. Each rule has a rule name (called a ***Non-Terminal***) consisting of one or more words withing angle brackets `<` and `>`. A rule associates its name with a rule body (called a ***Production*** | ***Terminals***) consisting of a sequence of symbols and rule names. If there are different possible rule bodies for the same rule then they are seperated by `|` known as OR.
+
+*EX:*
+
+@code<bnf>{
+  <digit> ::= 1 | 0
+  <binary> ::= <digit> | <digit> <binary>
+})

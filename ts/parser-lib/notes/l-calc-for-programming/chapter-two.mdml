@@ -1,0 +1,25 @@
+@title Chapter Two 
+@author Andrew
+@date 20260721
+
+# {@lambda}-calculus
+
+
+@code<bnf>{
+  t ::= x 
+    | \x.t
+    | t t
+}
+
+### Abstration
+
+@book(
+***Abstraction*** is central to problem solving and programming. It involves generalisation from concrete instances of a problem so that a general solution may be formulated. A general, abstraction, solution may then be used in turn to solve particular, concrete instances of the problem.
+
+@thoughts{
+Layman terms:
+}
+
+The simplest way to specify an instance of a problem is in terms of particular concrete operations on particular concrete objects.
+)
+
