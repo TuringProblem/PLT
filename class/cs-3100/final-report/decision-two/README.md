@@ -1,6 +1,5 @@
 # Illustration:
 
-// video goes here
 
 The flow from UI to domain model: the View binds `difficultyComboBox` and
 `typeComboBox` directly to ViewModel properties; the ViewModel reads from and writes
