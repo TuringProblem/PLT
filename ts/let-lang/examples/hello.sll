@@ -10,4 +10,5 @@ let a = 2
     in let c = 4 
       in a * b + c;
 
-(let x = 3 in x * x) + 1;
+(let x = 3 in x * x) + 3;
+
