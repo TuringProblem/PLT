@@ -1,6 +1,43 @@
 type State = 'q0' | 'q1' | 'q2'
 type Language = '0' | '1'
 type Statuses = "Accepted" | "Rejected" | "Undecided"
+type Color = 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white' | 'reset'
+type PrintColors = {
+  Colors: string[],
+}
+
+type Colors = {
+  'black': string,
+  'red': string,
+  'green': string,
+  'yellow': string,
+  'blue': string,
+  'magenta': string,
+  'cyan': string,
+  'white': string,
+  'reset': string
+}
+
+const getColorCode = (): PrintColors => ({
+  Colors: [
+    '\x1b[30m',
+    '\x1b[31m',
+    '\x1b[32m',
+    '\x1b[33m',
+    '\x1b[34m',
+    '\x1b[35m',
+    '\x1b[36m',
+    '\x1b[37m',
+    '\x1b[0m'
+  ]
+})
+
+
+const { ...colors } = getColorCode();
+
+
+
+const gof = (f: (x: Color) => string, x: Color) => f(x);
 
 type DFA = {
   δ: (Q: State, Σ: Language) => State, // δ = Transition function: δ(Q, Σ) → Q= Q × Σ → Q the state reached on reading x
@@ -58,8 +95,10 @@ const dfaTwo: DFA = {
 
 const languages: Language[][] = [["0", "1", "1", "1", "1", "0", "1"], ["0", "0"], ["0", "1", "1", "1", "1", "0", "1", "0"]]
 
+const printStatusColor = (color: Color) => gof(printColor, color);
+
 const printStatus = (dfa: DFA, lang: Language[]) => {
-  const status = accepts(dfa, lang) ? "Accepted" : "Rejected"
+  const status = accepts(dfa, lang) ? `Accepted` : `Rejected`
   console.log(`${lang.join("")}: ${status}`)
 };
 

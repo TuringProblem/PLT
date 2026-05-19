@@ -44,7 +44,7 @@ const dfaTwo = {
 };
 const languages = [["0", "1", "1", "1", "1", "0", "1"], ["0", "0"], ["0", "1", "1", "1", "1", "0", "1", "0"]];
 const printStatus = (dfa, lang) => {
-    const status = accepts(dfa, lang) ? "Accepted" : "Rejected";
+    const status = accepts(dfa, lang) ? "\x1b[32mAccepted\x1b[0m" : "\x1b[31mRejected\x1b[0m";
     console.log(`${lang.join("")}: ${status}`);
 };
 const testDFARestuls = (dfa, languages) => {
