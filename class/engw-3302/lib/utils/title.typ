@@ -62,7 +62,7 @@ since: 20260520 : @07:25
 
 
 #let displayDjStatement(content: "") = {
-  let appendContent = c => c + [#content]
+  let appendContent = c => c + text(size: 10pt)[#content]
   pipe(makeHeader, addSpacing, appendContent)(statement)
 }
 
