@@ -9,7 +9,7 @@ since: 20260520 : @07:25
 */
 
 #let tombstone = [\u{25A1}]
-#let songsList = (
+#let _songsList = (
     "first": virtualInsanity,
     "second": duality,
     "third": pneuma,
@@ -29,11 +29,15 @@ since: 20260520 : @07:25
         songUrl: ""
     ),
 )
+#let _djHeaderStyle = (
+  fill: blue
+)
 
 
 #let djStatementHeader(textContent, styles: (:)) = {
   text(..styles)[#textContent]
 }
+
 #let mainContent(songTitle: "", songUrl: "", songStyle: "", artist: "", content: "") = {
   set text(font: "Times New Roman", size: 12pt)
   set align(left)
@@ -48,31 +52,16 @@ since: 20260520 : @07:25
   v(1em)
 }
 
-#let meatAndPotatoes = songsList.values().map(e => mainContent(..e)).join()
-#let statement = "DJ Statement"
-#let compose(f, g) = x => f(g(x))
-#let pipe(..fns) = {
-  let funcs = fns.pos()
-  x => funcs.fold(x, (acc, f) => f(acc))
-}
+#let meatAndPotatoes = _songsList.values().map(e => mainContent(..e)).join();
+#let statement = "DJ Statement";
+#let compose(f, g) = x => f(g(x));
+#let pipe(..fns) = x => fns.pos().fold(x, (acc, f) => f(acc));
 
-/*
-#let displayDjStatement(settings: (:), content: "") = {
-  djStatementHeader(statement, styles: settings))
-  v(1em)
-  text(content)
-}
-*/
+#let makeHeader    = c => djStatementHeader(c, styles: _djHeaderStyle)
+#let addSpacing    = c => c + v(1em)
 
-/*
-  pipe(f, g, h)(x) => h(g(f(x)))  — left-to-right: statement flows through each stage
-  makeHeader:    string  -> styled header content
-  addSpacing:    content -> content + vertical gap
-  appendContent: content -> content + body text
-*/
-#let displayDjStatement(settings: (:), content: "") = {
-  let makeHeader    = c => djStatementHeader(c, styles: settings)
-  let addSpacing    = c => c + v(1em)
+
+#let displayDjStatement(content: "") = {
   let appendContent = c => c + [#content]
   pipe(makeHeader, addSpacing, appendContent)(statement)
 }
@@ -86,6 +75,6 @@ This soundtrack is designed to explore said discourse and reflect my journey so 
 
 
 
-#displayDjStatement(settings: (fill: blue), content: djStatement) 
+#displayDjStatement(content: djStatement) 
 // #djStatement
 #meatAndPotatoes
