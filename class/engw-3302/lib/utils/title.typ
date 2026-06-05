@@ -48,7 +48,7 @@ since: 20260520 : @07:25
 
   songLogic
   v(1pt)
-  box(..boxData)[#text(fill: black, size: 12pt, font: "Times New Roman")[#content]]
+  box(..boxData)[#text(fill: black, size: 10pt, font: "Times New Roman")[#content]]
   v(1em)
 }
 

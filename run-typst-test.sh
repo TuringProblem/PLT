@@ -5,7 +5,7 @@
 
 # Command ./run-typst-test.sh --main
 
-if [[ "$1" == "--main" ]]; then
+if [[ "$1" == "--main" || "$1" == "-main" ]]; then
     typst compile --root . class/engw-3302/lib/utils/title.typ
 fi
 
