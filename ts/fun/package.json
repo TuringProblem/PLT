@@ -5,7 +5,8 @@
   "main": "DFA.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dfa": "npx tsc && node DFA.js"
+    "dfa": "npx tsc && node DFA.js",
+    "example-one": "npx tsc && node examples/strings/one/example-one.js"
   },
   "keywords": [],
   "author": "",

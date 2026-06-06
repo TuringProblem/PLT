@@ -1,0 +1,9 @@
+# uv-managed virtualenv lives here; never commit it.
+.venv/
+
+# Manim render output.
+media/
+
+# Python caches.
+__pycache__/
+*.pyc
