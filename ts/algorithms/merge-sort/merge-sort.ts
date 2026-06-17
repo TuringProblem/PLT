@@ -53,10 +53,11 @@ const mergeSort = (arr: number[], left: number, right: number) => {
   merge(arr, left, mid, right);
 };
 
-const arr: number[] = Array.from({ length: 10000 }, () => Math.floor(Math.random() * 100));
-//const arr: number[] = Array.from({ length: 10 }, () => Math.floor(Math.random() * 100));
-console.log(arr);
+const arr: number[] = Array.from({ length: 1000000 }, () => Math.floor(Math.random() * 100));
+const arr2: number[] = Array.from({ length: 100 }, () => Math.floor(Math.random() * 100));
+console.log(`arr1: ${arr}\n\narr2: ${arr2}`);
 
 mergeSort(arr, 0, arr.length - 1);
-console.log(arr);
+mergeSort(arr2, 0, arr2.length - 1);
+console.log(`arr: ${arr}\n\narr2: ${arr2}`);
 
