@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "algo:5": "tsc ./5/longest-palandromic-substring.ts && node ./5/longest-palandromic-substring.js",
+    "algo:63": "tsc ./63/unique-paths-ii.ts && node ./63/unique-paths-ii.js",
+    "algo:217": "tsc ./217/contains-duplicate.ts && node ./217/contains-duplicate.js",
   },
   "keywords": [],
   "author": "",
