@@ -1,52 +1,54 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var extended_calc_lang_ts_1 = require("./extended-calc-lang.ts");
+var extended_calc_lang_1 = require("./extended-calc-lang");
 // I want to take the CalcLang and be abel to write (+ 2 3) and it generate the AST for me
-function tokenize(source) {
-    var _a;
-    return (_a = source.match(/\(|\)|[+\-*]|-?\d+(?:\.\d+)?/g)) !== null && _a !== void 0 ? _a : [];
-}
-function parse(source) {
-    var tokens = tokenize(source);
-    var current = 0;
-    function parseExpr() {
-        var token = tokens[current++];
-        if (token !== undefined && !Number.isNaN(Number(token))) {
-            return (0, extended_calc_lang_ts_1.numE)(Number(token));
-        }
-        // Recursive case: (<operator> <expr> <expr>)
-        if (token === "(") {
-            var operator = tokens[current++];
-            var e1 = parseExpr();
-            var e2 = parseExpr();
-            if (tokens[current++] !== ")") {
-                throw new Error("Expected ')'");
-            }
-            switch (operator) {
-                case "+":
-                    return (0, extended_calc_lang_ts_1.addE)(e1, e2);
-                case "*":
-                    return (0, extended_calc_lang_ts_1.mulE)(e1, e2);
-                case "-":
-                    return (0, extended_calc_lang_ts_1.subE)(e1, e2);
-                default:
-                    throw new Error("Unknown operator: ".concat(operator));
-            }
-        }
-        throw new Error("Unexpected token: ".concat(token));
+var tokenize = function(source) {
+  var _a;
+  return (_a = source.match(/\(|\)|[+\-*]|-?\d+(?:\.\d+)?/g)) !== null && _a !== void 0 ? _a : [];
+};
+var parse = function(source) {
+  var tokens = tokenize(source);
+  var current = 0;
+  var parseExpr = function() {
+    var token = tokens[current++];
+    if (token !== undefined) {
+      return (0, extended_calc_lang_1.numE)(Number(token));
     }
-    var ast = parseExpr();
-    if (current !== tokens.length) {
-        throw new Error("Unexpected token: ".concat(tokens[current]));
+    // Recursive case: (<operator> <expr> <expr>)
+    if (token === "(") {
+      var operator = tokens[current++];
+      var e1 = parseExpr();
+      var e2 = parseExpr();
+      if (tokens[current++] !== ")") {
+        throw new Error("Expected ')'");
+      }
+      switch (operator) {
+        case "+":
+          return (0, extended_calc_lang_1.addE)(e1, e2);
+        case "*":
+          return (0, extended_calc_lang_1.mulE)(e1, e2);
+        case "-":
+          return (0, extended_calc_lang_1.subE)(e1, e2);
+        default:
+          throw new Error("Unknown operator: ".concat(operator));
+      }
     }
-    return ast;
-}
+    throw new Error("Unexpected token: ".concat(token));
+  };
+  var ast = parseExpr();
+  if (current !== tokens.length) {
+    throw new Error("Unexpected token: ".concat(tokens[current]));
+  }
+  return ast;
+};
 var expression = parse("(+ 2 3)");
 var another_exp = parse("(+ (+ 5 2) 7)");
+var expressions_two = parse("(* 8 (+ 5 (- 3 2)))");
 console.log(expression);
 console.log(another_exp);
-console.log((0, extended_calc_lang_ts_1.evaluate)(expression));
-console.log((0, extended_calc_lang_ts_1.evaluate)(another_exp));
+console.log((0, extended_calc_lang_1.evaluate)(expression));
+console.log((0, extended_calc_lang_1.evaluate)(another_exp));
+console.log((0, extended_calc_lang_1.evaluate)(expressions_two));
 /**
 * for s-expressions the grammar is the following
 *

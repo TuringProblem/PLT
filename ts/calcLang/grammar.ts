@@ -1,19 +1,19 @@
-import { CalcLang, numE, addE, mulE, subE, evaluate } from "./extended-calc-lang.ts";
+import { CalcLang, numE, addE, mulE, subE, evaluate } from './extended-calc-lang';
 
 // I want to take the CalcLang and be abel to write (+ 2 3) and it generate the AST for me
 
-function tokenize(source: string): string[] {
+const tokenize = (source: string): string[] => {
   return source.match(/\(|\)|[+\-*]|-?\d+(?:\.\d+)?/g) ?? [];
 }
 
-function parse(source: string): CalcLang {
+const parse = (source: string): CalcLang => {
   const tokens = tokenize(source);
   let current = 0;
 
-  function parseExpr(): CalcLang {
+  const parseExpr = (): CalcLang => {
     const token = tokens[current++];
 
-    if (token !== undefined && !Number.isNaN(Number(token))) {
+    if (token !== undefined) {
       return numE(Number(token));
     }
 
@@ -53,12 +53,14 @@ function parse(source: string): CalcLang {
 
 const expression = parse("(+ 2 3)");
 const another_exp = parse("(+ (+ 5 2) 7)");
+const expressions_two = parse("(* 8 (+ 5 (- 3 2)))");
 
 
 console.log(expression);
 console.log(another_exp);
 console.log(evaluate(expression));
 console.log(evaluate(another_exp));
+console.log(evaluate(expressions_two));
 
 
 /**
