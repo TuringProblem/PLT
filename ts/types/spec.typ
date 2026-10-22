@@ -51,7 +51,13 @@ key
 )
 
 #box(inset: 8pt, fill: rgb(222, 222, 222), radius: 8pt, width: 100%)[
-  #axioms.join()
+  #grid(
+    columns: (1fr,) * axioms.len(),
+    align: center + bottom, 
+    ..axioms
+  )
+
+
 ]
 == inference rules:
 
@@ -74,13 +80,31 @@ key
 )
 
 #box(inset: 8pt, fill: rgb(222, 222, 222), radius: 8pt, width: 100%)[
-  #ifLangRules.join()
+  #grid(
+    columns: (1fr,) * ifLangRules.len(),
+    align: center + bottom,
+    ..ifLangRules
+  )
   #align(center)[
     some rules that make you questions your life
   ]
   $
     prooftree(rule(name: "if-true", tack e_1: tau, tack e_2: tau', tack "if true then" e_1 "else" e_2: tau))
   $
+]
+
+#line(length: 100%)
+
+= Grammar
+#box(inset: 8pt, fill: rgb(222, 222, 222), radius: 8pt, width: 100%)[
+  #align(center)[
+    ```
+    e ::= n | true | false
+      | e1 + e2
+      | e1 <= e2
+      | if e1 then e2 else e3 
+    ```
+  ]
 ]
 
 
